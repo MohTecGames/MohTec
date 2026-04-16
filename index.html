@@ -1,4 +1,4 @@
- <!  
+<!   
  /* 
  * =========================================================================
  * COPYRIGHT & ATTRIBUTION NOTICE
@@ -54,12 +54,12 @@
             overflow: hidden;
         }
 
-        /* --- UPDATED MOON WITH DEEP GLOW --- */
+        /* --- MOON --- */
         .moon-wrapper {
             position: absolute;
             top: 40px;
             right: 10%;
-            width: 250px; /* Increased size to make moon more prominent */
+            width: 250px; 
             height: 250px;
             display: flex;
             justify-content: center;
@@ -67,7 +67,6 @@
             z-index: 1;
         }
 
-        /* This creates the deep atmospheric glow behind the image */
         .moon-wrapper::before {
             content: '';
             position: absolute;
@@ -82,7 +81,7 @@
         .moon-img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ensures the whole moon in the PNG is visible */
+            object-fit: contain;
             border-radius: 50%;
             filter: drop-shadow(0 0 15px rgba(254, 252, 215, 0.5));
             animation: moonPulse 8s infinite ease-in-out;
@@ -271,29 +270,69 @@
         .skill-name { color: #fff; }
         .skill-stars { color: var(--neon-cyan); text-shadow: 0 0 5px var(--neon-cyan); }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER & CONTACT SECTION --- */
         footer {
             text-align: center;
-            padding: 50px;
-            background: rgba(0, 0, 0, 0.4);
-            margin-top: 100px;
-            border-top: 1px solid var(--glass-dark);
+            padding: 60px 20px;
+            margin-top: 50px;
         }
 
+        /* The Contact Card mimics the Skill Category style */
+        .contact-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--glass-dark);
+            border: 1px solid rgba(255, 0, 224, 0.2);
+            border-radius: 20px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card h3 {
+            color: var(--neon-pink);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* Stacking links side-by-side */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Wraps on mobile */
+            gap: 15px;
+        }
+
+        /* Styling links as interactive buttons */
         .contact-links a {
-            display: block;
-            margin: 10px 0;
-            font-size: 1.2rem;
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 0.95rem;
             color: #fff;
             text-decoration: none;
-            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
 
-        .contact-links a:hover { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); }
+        .contact-links a:hover {
+            background: var(--neon-pink);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--neon-pink);
+            border-color: var(--neon-pink);
+        }
 
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
             .card.expanded { padding: 30px; }
+            .contact-links a {
+                width: 100%; /* Full width links on mobile for easier tapping */
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -301,7 +340,6 @@
 
     <div class="sky-container">
         <div class="stars"></div>
-        <!-- UPDATED MOON STRUCTURE -->
         <div class="moon-wrapper">
             <img src="moon.png" class="moon-img" alt="Moon">
         </div>
@@ -460,13 +498,16 @@
             </div>
         </div>
 
+        <!-- FOOTER (Updated Section) -->
         <footer>
-            <h3 style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink);">Get In Touch</h3>
-            <div class="contact-links">
-                <a href="mailto:moh@mohtec.com">moh@mohtec.com</a>
-                <a href="https://www.linkedin.com/in/mohammedalkhateeb-bb297370">LinkedIn</a>
-                <a href="https://github.com/MohTecGames">GitHub</a>
-                <a >www.mohtec.com</a>
+            <div class="contact-card">
+                <h3>Get In Touch</h3>
+                <div class="contact-links">
+                    <a href="mailto:moh@mohtec.com">moh@mohtec.com</a>
+                    <a href="https://www.linkedin.com/in/mohammedalkhateeb-bb297370" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/MohTecGames" target="_blank">GitHub</a>
+                    <a href="http://www.mohtec.com" target="_blank">www.mohtec.com</a>
+                </div>
             </div>
         </footer>
     </main>
