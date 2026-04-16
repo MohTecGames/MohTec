@@ -1,0 +1,471 @@
+ <!  
+ /* 
+ * =========================================================================
+ * COPYRIGHT & ATTRIBUTION NOTICE
+ * =========================================================================
+ * CREATED BY: MohTecGames
+ * 
+ * NOTICE: This work is protected. Any reproduction, distribution, or use 
+ * of this code, its logic, or its assets requires prior written approval 
+ * from MohTecGames.
+ * ========================
+ */
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Alkhateeb | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --moon-color: #fefcd7;
+            --moon-glow: rgba(254, 252, 215, 0.2);
+            --neon-cyan: #00f2ff;
+            --neon-pink: #ff00e0;
+            --glass-dark: rgba(10, 10, 30, 0.7);
+            --text-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: var(--text-color);
+            background: linear-gradient(to bottom, #050510, #0a0a2a, #1a1a3a);
+            min-height: 100vh;
+        }
+
+        /* --- NIGHT BACKGROUND --- */
+        .sky-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .moon {
+            position: absolute;
+            top: 40px;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: var(--moon-color);
+            border-radius: 50%;
+            box-shadow: 0 0 60px var(--moon-glow), inset -20px -20px 50px rgba(0,0,0,0.2);
+            animation: moonPulse 8s infinite ease-in-out;
+        }
+
+        @keyframes moonPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            box-shadow: 453px 234px #fff, 123px 567px #fff, 890px 120px #fff, 345px 890px #fff, 678px 345px #fff, 120px 120px #fff, 900px 900px #fff, 500px 500px #fff, 200px 800px #fff, 700px 100px #fff, 400px 200px #fff, 100px 400px #fff, 800px 600px #fff, 300px 300px #fff, 600px 700px #fff, 950px 450px #fff, 50px 950px #fff, 250px 50px #fff, 750px 250px #fff, 850px 850px #fff, 150px 150px #fff, 450px 450px #fff, 550px 550px #fff, 350px 650px #fff, 650px 350px #fff;
+            animation: twinkle 5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(30, 30, 60, 0.4);
+            border-radius: 50px;
+            filter: blur(20px);
+            animation: moveClouds linear infinite;
+        }
+
+        .c1 { width: 400px; height: 100px; top: 20%; left: -450px; animation-duration: 50s; }
+        .c2 { width: 500px; height: 120px; top: 50%; left: -550px; animation-duration: 70s; animation-delay: 15s; }
+        .c3 { width: 300px; height: 80px; top: 80%; left: -350px; animation-duration: 40s; animation-delay: 5s; }
+
+        @keyframes moveClouds {
+            from { transform: translateX(-10vw); }
+            to { transform: translateX(110vw); }
+        }
+
+        /* --- MAIN LAYOUT --- */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 100px 20px;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .profile-wrapper {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            padding: 8px;
+            background: var(--glass-dark);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px var(--neon-cyan);
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 8px rgba(0, 242, 255, 0.3);
+        }
+
+        /* --- EXPERIENCE CARDS --- */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .card {
+            background: var(--glass-dark);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 242, 255, 0.15);
+            border-radius: 24px;
+            padding: 40px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+
+        .card h3 { font-size: 2rem; color: #fff; text-shadow: 0 0 10px var(--neon-cyan); }
+        .card h4 { font-size: 1.2rem; color: var(--neon-cyan); margin-bottom: 15px; }
+        .card p { font-size: 1rem; line-height: 1.6; opacity: 0.8; }
+
+        .card.expanded {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 1000; border-radius: 0; padding: 60px;
+            overflow-y: auto; background: rgba(5, 5, 16, 0.95);
+        }
+
+        .card.expanded h3 { font-size: 3.5rem; }
+        .card.expanded h4 { font-size: 1.8rem; }
+        .card.expanded p, .card.expanded ul { font-size: 1.4rem; }
+        .card.expanded .extra-content { display: block !important; }
+
+        .close-btn {
+            display: none;
+            position: absolute;
+            top: 30px; right: 40px;
+            font-size: 2rem; background: none; border: none;
+            cursor: pointer; color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+        .card.expanded .close-btn { display: block; }
+
+        /* --- SKILLS MATRIX --- */
+        .skills-matrix {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--glass-dark);
+            border: 1px solid rgba(255, 0, 224, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-category h5 {
+            color: var(--neon-pink);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255, 0, 224, 0.4);
+            border-bottom: 1px solid rgba(255, 0, 224, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-name { color: #fff; }
+        .skill-stars { color: var(--neon-cyan); text-shadow: 0 0 5px var(--neon-cyan); }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.4);
+            margin-top: 100px;
+            border-top: 1px solid var(--glass-dark);
+        }
+
+        .contact-links a {
+            display: block;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .card.expanded { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sky-container">
+        <div class="stars"></div>
+        <div class="moon"></div>
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+    </div>
+
+    <main>
+        <header>
+            <div class="profile-wrapper">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQGcgPVGBmM_bw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1714074114707?e=1778112000&v=beta&t=ui3aPvKLejAj7ft5S1lZXAyacXRFoArqnhOq2pJ6ly0" alt="Mohammed Alkhateeb" class="profile-img">
+            </div>
+            <h1>Mohammed Alkhateeb</h1>
+            <p class="subtitle">Technology Professional | IT Engineer | MSc in Networking and Cloud Infrastructure</p>
+            <p style="margin-top: 20px; font-style: italic; opacity: 0.6;">"15+ years of designing, implementing and supporting business IT infrastructure."</p>
+        </header>
+
+        <div class="experience-grid">
+            <!-- Card 1 -->
+            <div class="card" onclick="expandCard(this)">
+                <button class="close-btn" onclick="closeCard(event, this)">✕</button>
+                <div>
+                    <h3>Charles Square</h3>
+                    <h4>Systems Engineer (Night)</h4>
+                    <p>Sept 2024 - Present • London / Remote</p>
+                </div>
+                <p>Specialized Azure, M365, and Endpoint support for a Microsoft Gold Partner.</p>
+                <div style="display:none;" class="extra-content">
+                    <p><strong style="font-size: 1.8rem; color: var(--neon-cyan);">Role Overview:</strong> Managing complex, time-critical environments within an ISO27001 certified organization.</p>
+                    <p><strong style="font-size: 1.8rem; color: var(--neon-cyan);">Technical Stack:</strong></p>
+                    <ul style="font-size: 1.3rem; margin-top: 10px;">
+                        <li>Azure: Active Directory, Exchange Online, AVD, Networking.</li>
+                        <li>Endpoint: Intune, Autopilot, Endpoint Manager.</li>
+                        <li>Security: Conditional Access, MFA, PIM, AIP.</li>
+                        <li>Infrastructure: LAN/WAN, PowerShell, Azure Storage.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card" onclick="expandCard(this)">
+                <button class="close-btn" onclick="closeCard(event, this)">✕</button>
+                <div>
+                    <h3>Blinx Technology</h3>
+                    <h4>Service Engineer (2nd Line)</h4>
+                    <p>Oct 2022 - Sept 2024 • London, UK</p>
+                </div>
+                <p>Internal MSP providing technical support and infrastructure oversight.</p>
+                <div style="display:none;" class="extra-content">
+                    <p><strong style="font-size: 1.8rem; color: var(--neon-cyan);">Key Responsibilities:</strong></p>
+                    <ul style="font-size: 1.3rem; margin-top: 10px;">
+                        <li>1st and 2nd line technical support (Phone, Email, Face-to-Face)</li>
+                        <li>Troubleshooting application, desktop, network, and printing</li>
+                        <li>Building and imaging hardware to company standards</li>
+                        <li>Onboarding/Offboarding and vendor management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card" onclick="expandCard(this)">
+                <button class="close-btn" onclick="closeCard(event, this)">✕</button>
+                <div>
+                    <h3>Forge Dynamic Ltd</h3>
+                    <h4>IT Support Analyst (2nd Line)</h4>
+                    <p>Nov 2020 - Oct 2022 • London, UK</p>
+                </div>
+                <p>A blend of support work, project work, and onsite engineering.</p>
+                <div style="display:none;" class="extra-content">
+                    <p><strong style="font-size: 1.8rem; color: var(--neon-cyan);">Key Achievements:</strong></p>
+                    <ul style="font-size: 1.3rem; margin-top: 10px;">
+                        <li>Managed 1st line staff and served as primary escalation point</li>
+                        <li>Proactive device management using N-able RMM</li>
+                        <li>Rollout of 200+ laptops across 40+ sites</li>
+                        <li>Onboarded 3 new clients and integrated infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card" onclick="expandCard(this)">
+                <button class="close-btn" onclick="closeCard(event, this)">✕</button>
+                <div>
+                    <h3>Onega Limited</h3>
+                    <h4>Second Line Support Engineer</h4>
+                    <p>Oct 2018 - Sept 2020 • London, UK</p>
+                </div>
+                <p>Supporting 200+ clients across various industries via remote/onsite support.</p>
+                <div style="display:none;" class="extra-content">
+                    <p><strong style="font-size: 1.8rem; color: var(--neon-cyan);">Technical Stack:</strong></p>
+                    <ul style="font-size: 1.3rem; margin-top: 10px;">
+                        <li>Mikrotik Networking & Watchguard Firewalls</li>
+                        <li>VMware ESXi, KVM, and ConnectWise RMM tools</li>
+                        <li>Office 365 & Exchange Online (Mimecast)</li>
+                        <li>Windows Active Directory & Physical Infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card" onclick="expandCard(this)">
+                <button class="close-btn" onclick="closeCard(event, this)">✕</button>
+                <div>
+                    <h3>3DNOVATIONS LIMITED</h3>
+                    <h4>System Administrator</h4>
+                    <p>Aug 2011 - Sept 2018 • 7 Years</p>
+                </div>
+                <p>Designed office infrastructure and spearheaded product development.</p>
+                <div style="display:none;" class="extra-content">
+                    <p><strong style="font-size: 1.8rem; color: var(--neon-cyan);">Key Responsibilities:</strong></p>
+                    <ul style="font-size: 1.3rem; margin-top: 10px;">
+                        <li>Designed infrastructure using pfSense, VMware, and Unraid</li>
+                        <li>Led a team of 2 developers and 2 engineers for product R&D</li>
+                        <li>Managed high-availability Windows and Linux Debian environments</li>
+                        <li>Recruited, trained, and supervised technical staff</li>
+                        <li>Represented products at national exhibitions and live demos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS MATRIX -->
+        <h2 style="text-align: center; margin-bottom: 30px; color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan);">TECHNICAL SKILL MATRIX</h2>
+        <div class="skills-matrix">
+            
+            <div class="skill-category">
+                <h5>Cloud & OS</h5>
+                <div class="skill-item"><span class="skill-name">O365 Admin</span><span class="skill-stars">★★★★☆</span></div>
+                <div class="skill-item"><span class="skill-name">Windows Server</span><span class="skill-stars">★★★☆☆</span></div>
+                <div class="skill-item"><span class="skill-name">Linux</span><span class="skill-stars">★★☆☆☆</span></div>
+                <div class="skill-item"><span class="skill-name">Azure AD / Intune</span><span class="skill-stars">★★★★☆</span></div>
+                <div class="skill-item"><span class="skill-name">SharePoint</span><span class="skill-stars">★★★★☆</span></div>
+            </div>
+
+            <div class="skill-category">
+                <h5>Networking & Security</h5>
+                <div class="skill-item"><span class="skill-name">Networking & TCP/IP</span><span class="skill-stars">★★★☆☆</span></div>
+                <div class="skill-item"><span class="skill-name">Watchguard Firewall</span><span class="skill-stars">★★★☆☆</span></div>
+                <div class="skill-item"><span class="skill-name">Mimecast</span><span class="skill-stars">★★★☆☆</span></div>
+                <div class="skill-item"><span class="skill-name">Ubiquiti / Meraki</span><span class="skill-stars">★★★☆☆</span></div>
+                <div class="skill-item"><span class="skill-name">Email Tracing</span><span class="skill-stars">★★★★☆</span></div>
+            </div>
+
+            <div class="skill-category">
+                <h5>Virtualization & Tools</h5>
+                <div class="skill-item"><span class="skill-name">KVM / VMware</span><span class="skill-stars">★★★☆☆</span></div>
+                <div class="skill-item"><span class="skill-name">Unraid</span><span class="skill-stars">★★★☆☆</span></div>
+                <div class="skill-item"><span class="skill-name">ConnectWise</span><span class="skill-stars">★★★★☆</span></div>
+                <div class="skill-item"><span class="skill-name">N-able (Solarwinds)</span><span class="skill-stars">★★★★☆</span></div>
+                <div class="skill-item"><span class="skill-name">StorageCraft</span><span class="skill-stars">★★★★☆</span></div>
+            </div>
+
+            <div class="skill-category">
+                <h5>Professional Skills</h5>
+                <div class="skill-item"><span class="skill-name">Customer Support</span><span class="skill-stars">★★★★★</span></div>
+                <div class="skill-item"><span class="skill-name">Desk Side Support</span><span class="skill-stars">★★★★★</span></div>
+                <div class="skill-item"><span class="skill-name">Troubleshooting</span><span class="skill-stars">★★★★☆</span></div>
+                <div class="skill-item"><span class="skill-name">Working within SLAs</span><span class="skill-stars">★★★★☆</span></div>
+                <div class="skill-item"><span class="skill-name">Effective Comm.</span><span class="skill-stars">★★★★★</span></div>
+            </div>
+
+        </div>
+
+        <footer>
+            <h3>Get In Touch</h3>
+            <div class="contact-links">
+                <a href="mailto:moh@mohtec.com">moh@mohtec.com</a>
+                <a href="https://www.linkedin.com/in/mohammedalkhateeb-bb297370">LinkedIn</a>
+                <a href="https://github.com/MohTecGames">GitHub</a>
+                <a href="https://www.mohtec.com">www.mohtec.com</a>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        function expandCard(card) {
+            if (card.classList.contains('expanded')) return;
+            card.classList.add('expanded');
+            const extra = card.querySelector('.extra-content');
+            if (extra) extra.style.display = 'block';
+        }
+
+        function closeCard(event, btn) {
+            event.stopPropagation();
+            const card = btn.parentElement;
+            card.classList.remove('expanded');
+            const extra = card.querySelector('.extra-content');
+            if (extra) extra.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
