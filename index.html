@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammed Alkhateeb | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         :root {
             --moon-color: #fefcd7;
@@ -53,15 +54,37 @@
             overflow: hidden;
         }
 
-        .moon {
+        /* --- UPDATED MOON WITH DEEP GLOW --- */
+        .moon-wrapper {
             position: absolute;
             top: 40px;
             right: 10%;
-            width: 150px;
-            height: 150px;
-            background: var(--moon-color);
+            width: 250px; /* Increased size to make moon more prominent */
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        /* This creates the deep atmospheric glow behind the image */
+        .moon-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(254, 252, 215, 0.3) 0%, rgba(254, 252, 215, 0) 70%);
+            filter: blur(40px);
+            z-index: -1;
+            animation: moonPulse 8s infinite ease-in-out;
+        }
+
+        .moon-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures the whole moon in the PNG is visible */
             border-radius: 50%;
-            box-shadow: 0 0 60px var(--moon-glow), inset -20px -20px 50px rgba(0,0,0,0.2);
+            filter: drop-shadow(0 0 15px rgba(254, 252, 215, 0.5));
             animation: moonPulse 8s infinite ease-in-out;
         }
 
@@ -278,7 +301,10 @@
 
     <div class="sky-container">
         <div class="stars"></div>
-        <div class="moon"></div>
+        <!-- UPDATED MOON STRUCTURE -->
+        <div class="moon-wrapper">
+            <img src="moon.png" class="moon-img" alt="Moon">
+        </div>
         <div class="cloud c1"></div>
         <div class="cloud c2"></div>
         <div class="cloud c3"></div>
@@ -290,7 +316,7 @@
                 <img src="https://media.licdn.com/dms/image/v2/D4E03AQGcgPVGBmM_bw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1714074114707?e=1778112000&v=beta&t=ui3aPvKLejAj7ft5S1lZXAyacXRFoArqnhOq2pJ6ly0" alt="Mohammed Alkhateeb" class="profile-img">
             </div>
             <h1>Mohammed Alkhateeb</h1>
-            <p class="subtitle">Technology Professional | IT Engineer | MSc in Networking and Cloud Infrastructure</p>
+            <p class="subtitle">Technology Professional | IT Engineer | MSc</p>
             <p style="margin-top: 20px; font-style: italic; opacity: 0.6;">"15+ years of designing, implementing and supporting business IT infrastructure."</p>
         </header>
 
@@ -390,9 +416,8 @@
                     <ul style="font-size: 1.3rem; margin-top: 10px;">
                         <li>Designed infrastructure using pfSense, VMware, and Unraid</li>
                         <li>Led a team of 2 developers and 2 engineers for product R&D</li>
-                        <li>Managed high-availability Windows and Linux Debian environments</li>
+                        <li>Managed high-availability Windows and Linux environments</li>
                         <li>Recruited, trained, and supervised technical staff</li>
-                        <li>Represented products at national exhibitions and live demos</li>
                     </ul>
                 </div>
             </div>
@@ -401,7 +426,6 @@
         <!-- SKILLS MATRIX -->
         <h2 style="text-align: center; margin-bottom: 30px; color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan);">TECHNICAL SKILL MATRIX</h2>
         <div class="skills-matrix">
-            
             <div class="skill-category">
                 <h5>Cloud & OS</h5>
                 <div class="skill-item"><span class="skill-name">O365 Admin</span><span class="skill-stars">★★★★☆</span></div>
@@ -410,7 +434,6 @@
                 <div class="skill-item"><span class="skill-name">Azure AD / Intune</span><span class="skill-stars">★★★★☆</span></div>
                 <div class="skill-item"><span class="skill-name">SharePoint</span><span class="skill-stars">★★★★☆</span></div>
             </div>
-
             <div class="skill-category">
                 <h5>Networking & Security</h5>
                 <div class="skill-item"><span class="skill-name">Networking & TCP/IP</span><span class="skill-stars">★★★☆☆</span></div>
@@ -419,7 +442,6 @@
                 <div class="skill-item"><span class="skill-name">Ubiquiti / Meraki</span><span class="skill-stars">★★★☆☆</span></div>
                 <div class="skill-item"><span class="skill-name">Email Tracing</span><span class="skill-stars">★★★★☆</span></div>
             </div>
-
             <div class="skill-category">
                 <h5>Virtualization & Tools</h5>
                 <div class="skill-item"><span class="skill-name">KVM / VMware</span><span class="skill-stars">★★★☆☆</span></div>
@@ -428,7 +450,6 @@
                 <div class="skill-item"><span class="skill-name">N-able (Solarwinds)</span><span class="skill-stars">★★★★☆</span></div>
                 <div class="skill-item"><span class="skill-name">StorageCraft</span><span class="skill-stars">★★★★☆</span></div>
             </div>
-
             <div class="skill-category">
                 <h5>Professional Skills</h5>
                 <div class="skill-item"><span class="skill-name">Customer Support</span><span class="skill-stars">★★★★★</span></div>
@@ -437,16 +458,15 @@
                 <div class="skill-item"><span class="skill-name">Working within SLAs</span><span class="skill-stars">★★★★☆</span></div>
                 <div class="skill-item"><span class="skill-name">Effective Comm.</span><span class="skill-stars">★★★★★</span></div>
             </div>
-
         </div>
 
         <footer>
-            <h3>Get In Touch</h3>
+            <h3 style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink);">Get In Touch</h3>
             <div class="contact-links">
                 <a href="mailto:moh@mohtec.com">moh@mohtec.com</a>
                 <a href="https://www.linkedin.com/in/mohammedalkhateeb-bb297370">LinkedIn</a>
                 <a href="https://github.com/MohTecGames">GitHub</a>
-                <a>www.mohtec.com</a>
+                <a >www.mohtec.com</a>
             </div>
         </footer>
     </main>
